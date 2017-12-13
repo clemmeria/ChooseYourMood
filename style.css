@@ -1,12 +1,27 @@
-body{
-background-color:pink;
+body {
+	
 }
 
-h1{
-color:blue;
+/*_____TEXTES : titres_____*/
+h1, h2 {
+	text-align: center;
 }
 
-p{
-font-weight: 300;
-color:red;
+h1 {
+	text-transform: uppercase;
+}
+
+h2 {
+	font-style: italic;
+}
+
+/*_____IMAGES : fox-emoticons_____*/
+#mood-parent {
+	display: flex;
+	justify-content: center;
+}
+
+.mood-child {
+	height: 10%;
+	width: 10%;
 }
