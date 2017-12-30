@@ -22,7 +22,7 @@ if (contains('greek', anonymousPro.subsets)) {
 var url = apiUrl.join('');
 */
 
-// // // Création d'une classe pour les stats : // // // 
+// // // Création d'une classe pour les stats : // // // KESKECE?
 var request = new XMLHttpRequest();
 var classes;
 

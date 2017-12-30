@@ -1,27 +1,68 @@
 body {
-	
+	background-color: cadetblue;
+	color: white;
 }
 
 /*_____TEXTES : titres_____*/
-h1, h2 {
+#site-title, #site-subtitle {
 	text-align: center;
 }
 
-h1 {
+#site-title {
+	font-family: 'Alfa Slab One', cursive;
 	text-transform: uppercase;
+	font-size: 3em;
+	letter-spacing: 0.05em;
+	margin: 50px 0 10px 0;
 }
 
-h2 {
-	font-style: italic;
+#site-subtitle {
+	font-family: 'Sriracha', cursive;
+	/*font-style: italic;*/
+	font-size: 1.5em;
+	margin: 10px 0 50px 0;
 }
 
 /*_____IMAGES : fox-emoticons_____*/
 #mood-parent {
-	display: flex;
+	display: grid;
 	justify-content: center;
+	grid-template-columns: 1fr 1fr 1fr;
+	margin: 0 30%;
+	grid-gap: 20px;
 }
 
 .mood-child {
-	height: 10%;
-	width: 10%;
+	justify-self: center;
+	height: 150px;
+	width: 150px;
+}
+
+.mood-child:hover {
+	animation: imgOpacity 500ms;
+	animation-fill-mode: forwards;
+}
+
+/*_____RESPONSIVE_____*/
+@media (max-width: 768px) {
+	#mood-parent {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.mood-child {
+		justify-self: center;
+	}
+}
+
+/*_____ANIMATIONS_____*/
+@keyframes imgOpacity {
+	from {
+		opacity: 1;
+		transform: scale(1, 1);
+	}
+	to {
+		opacity: 0;
+		transform: scale(1.25, 1.25);
+	}
+
 }
