@@ -3,7 +3,11 @@ body {
 	color: white;
 }
 
+
+
+
 /*_____TEXTES : titres_____*/
+
 #site-title, #site-subtitle {
 	text-align: center;
 }
@@ -23,7 +27,10 @@ body {
 	margin: 10px 0 50px 0;
 }
 
-/*_____IMAGES : fox-emoticons_____*/
+
+
+/*_____ACCUEIL : fox-emoticons_____*/
+
 #mood-parent {
 	display: grid;
 	justify-content: center;
@@ -43,7 +50,47 @@ body {
 	animation-fill-mode: forwards;
 }
 
+
+
+/*_____MENU : fox-emoticons_____*/
+
+#mood-parent-selection {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 30%;
+}
+
+.mood-child-selection {
+	height: 50px;
+	width: 50px;
+}
+
+.mood-child-selection:hover {
+	animation: imgOpacity 500ms;
+	animation-fill-mode: forwards;
+}
+
+
+
+/*_____POP-UP : mood-fonts_____*/
+
+#pop-up-parent {
+
+}
+
+#pop-up-child {
+
+}
+
+.pop-up-text {
+	visibility: hidden;
+}
+
+
+
 /*_____RESPONSIVE_____*/
+
 @media (max-width: 768px) {
 	#mood-parent {
 		grid-template-columns: 1fr 1fr;
@@ -54,15 +101,17 @@ body {
 	}
 }
 
+
+
 /*_____ANIMATIONS_____*/
+
 @keyframes imgOpacity {
 	from {
 		opacity: 1;
 		transform: scale(1, 1);
 	}
 	to {
-		opacity: 0;
+		opacity: 0.5;
 		transform: scale(1.25, 1.25);
 	}
-
 }
