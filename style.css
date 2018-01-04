@@ -81,12 +81,12 @@ body {
 
 #pop-up-parent {}
 
-#pop-up-child {}
-
-.pop-up-text {
+#pop-up-child {
     visibility: hidden;
     text-align: center;
 }
+
+.pop-up-text {}
 
 
 
