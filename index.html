@@ -6,21 +6,14 @@
         <title>Choose your mood</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="normalize.css">
-        <style>
-            @import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One|Sriracha');
-            @import url('https://fonts.googleapis.com/css?family=Patrick+Hand'); /* neutral */
-            @import url('https://fonts.googleapis.com/css?family=Merienda'); /* happy */
-            @import url('https://fonts.googleapis.com/css?family=Pangolin'); /* sad */
-            @import url('https://fonts.googleapis.com/css?family=Permanent+Marker'); /* angry */
-            @import url('https://fonts.googleapis.com/css?family=Amatic+SC'); /* surprised */
-            @import url('https://fonts.googleapis.com/css?family=Coming+Soon'); /* tired */
-        </style> 
+        <link rel="icon" type="image/png" href="img/fox_emoticons_happy.png" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i,900,900i|Alfa+Slab+One|Sriracha|Bitter|Lobster|Frijole|Bangers|Amatic+SC|Love+Ya+Like+A+Sister"> 
     </head>
 
     <body>
     <h1 id="site-title">Choose your mood</h1>
     <h2 id="site-subtitle">we will assign you a font</h2>
-    <div id="mood-parent">
+    <div class="mood-parent">
         <img id="neutral" class="mood-child" alt="neutral" src="img/fox_emoticons_neutral.png"/>
         <img id="happy" class="mood-child" alt="happy" src="img/fox_emoticons_happy.png"/>
         <img id="sad" class="mood-child" alt="sad" src="img/fox_emoticons_sad.png"/>
@@ -31,11 +24,10 @@
 
     <div id="pop-up-parent" class="pop-up-active">
         <div id="pop-up-child">
-            <p class="pop-up-text">The quick brown fox jumps over the lazy dog.</p>
+            <img id="pop-up-img" class="" alt="" src=""/>
+            <p id="pop-up-text">The quick brown fox jumps over the lazy dog.<br/></p>
         </div>
     </div>
-
-    <div id="meteo"></div>
 
     <script src="main.js"></script>
     </body>

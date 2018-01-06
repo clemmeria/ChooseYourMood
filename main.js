@@ -19,97 +19,89 @@ function ajaxGet(url, callback) {
 }
 
 // Accès à l'API Google Fonts avec la clé d'accès AIzaSyCq2Ygc98wsvGDk4XY_ApI4CoXNPu__Q5Y
-
 ajaxGet("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCq2Ygc98wsvGDk4XY_ApI4CoXNPu__Q5Y", function (reponse) {
-
     var fonts = JSON.parse(reponse);
 
-    /*_____MENU : fox-emoticons_____*/
-
     // Appel de la fonction setSelected
-
-    $pics = document.querySelectorAll('.mood-child')
-    for (let pic of $pics) {
-        pic.addEventListener("click", setSelected)
+    $imgs = document.querySelectorAll(".mood-child");
+    for (let img of $imgs) {
+        img.addEventListener("click", setSelected);
     }
 
-    // Création des spans qui vont recueillir les infos typographiques
-    // A insérer dans la pop-up
-    
+    // Création des spans qui vont recueillir les infos typographiques à insérer dans la pop-up
     var famille = document.createElement("span");
     var categorie = document.createElement("span");
 
     function setSelected(e) {
+        let $oldImg = document.querySelector(".mood-child-selected");
+        if ($oldImg)
+        	$oldImg.classList.remove("mood-child-selected");
 
-        let $old = document.querySelector('.selected')
-        if ($old) $old.classList.remove("selected")
-        $selection = this.classList.add("selected")
+        let $newImg = this;
+        $newImg.classList.add("mood-child-selected");
 
-        /*_____POP-UP : Apparition_____*/
+        //Apparition de la fenêtre pop-up contenant l'image du mood et le texte
+        var $popUpText = document.querySelector("#pop-up-child");
+		var $popUpImg = document.querySelector("#pop-up-img");
+		$popUpImg.alt = $newImg.alt;
+		$popUpImg.src = $newImg.src;
+        document.querySelector("#pop-up-parent").style.visibility = "visible";
 
-        $popUp = document.querySelector('#pop-up-child')
-        $popUp.style.visibility = "visible";
+		//Changement du menu de selection par modification de class
+		for(let img of $imgs) {
+			img.classList.add("mood-child-selection");
+		}
+		var moodParent = document.querySelector(".mood-parent");
+		moodParent.classList.add("mood-parent-selection");
 
-
-        /*_____MOOD : Attribution de la font_____*/
-
-        // Recherche du fox selectionné et attribution de la font
-
-        console.log(e.target.id);
+        // Recherche du mood selectionné et attribution de la font
         var font = "";
-
         switch (e.target.id) {
             case "neutral":
-                font = "Patrick Hand";
+                font = "Bitter";
                 break;
             case "happy":
-                font = "Merienda";
+                font = "Lobster";
                 break;
             case "sad":
-                font = "Pangolin";
+                font = "Frijole";
                 break;
             case "angry":
-                font = "Permanent Marker";
+                font = "Bangers";
                 break;
             case "surprised":
                 font = "Amatic SC";
                 break;
             case "tired":
-                font = "Coming Soon";
+                font = "Love Ya Like A Sister";
                 break;
             default:
-                font = "Arial";
+                font = "Lato";
         }
 
-        // Changement de la font 
+        // Changement de la font
+        $popUpText.style.fontFamily = font;
 
-        $popUp.style.fontFamily = font;
-
-        // Recherche d'informations sur la font :
-        // Famille et Catégorie
-        
+        // Recherche d'informations sur la font : famille et catégorie
         var items = fonts.items;
         var family = font;
         var variants = items.variants;
-        for (var i = 0; i < items.length; i++) {
-            if (font == items[i].family) {
-                console.log(family);
-                category = items[i].category
-                console.log(category);
+        for(var i = 0; i < items.length; i++) {
+            if(font == items[i].family) {
+                category = items[i].category;
             }
         }
         
         // Modification du contenu pour ajouter les infos typographiques
+        famille.textContent = "Family : " + family + "   ||   ";
+        categorie.textContent = "Category : " + category;
+        var infos = document.querySelector("#pop-up-text");
         
-        famille.textContent = "Famille : " + family + " & ";
-        categorie.textContent = "Categorie : " + category;
-        var infos = document.querySelector("#pop-up-child");
-        
-        // Ajout des infos en tant qu'enfant à la pop-up parent
-        
+        // Ajout des infos en tant qu'enfant au paragraphe pop-up-text
+        var $br = document.createElement("br");
         infos.appendChild(famille);
+        /*if(infos.childNodes.length == 3) // && infos.childNodes[3] == "<span>"
+        	infos.appendChild($br);*/
         infos.appendChild(categorie);
-
     }
-
 });

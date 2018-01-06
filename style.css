@@ -15,24 +15,23 @@ body {
     text-transform: uppercase;
     font-size: 3em;
     letter-spacing: 0.05em;
-    margin: 50px 0 10px 0;
+    margin: 50px 0 0 0;
 }
 
 #site-subtitle {
     font-family: 'Sriracha', cursive;
-    /*font-style: italic;*/
     font-size: 1.5em;
-    margin: 10px 0 50px 0;
+    margin: 0 0 25px 0;
 }
 
 
 
 /*_____ACCUEIL : fox-emoticons_____*/
 
-#mood-parent {
+.mood-parent {
     display: grid;
     justify-content: center;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     margin: 0 30%;
     grid-gap: 20px;
 }
@@ -58,16 +57,16 @@ body {
 
 /*_____MENU : fox-emoticons_____*/
 
-#mood-parent-selection {
+.mood-parent-selection {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 30%;
 }
 
 .mood-child-selection {
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
+    margin : 0 10px;
 }
 
 .mood-child-selection:hover {
@@ -77,29 +76,67 @@ body {
 
 
 
-/*_____POP-UP : mood-fonts_____*/
+/*_____POP-UP : display_____*/
 
-#pop-up-parent {}
+#pop-up-parent {
+    visibility: hidden;
+}
 
 #pop-up-child {
-    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
-.pop-up-text {}
+#pop-up-img, #pop-up-text {
+	width: 50%;
+}
 
+#pop-up-img {
+	height: 250px;
+	width: 250px;
+}
+
+#pop-up-text {
+	font-size: 2.25em;
+	margin: 50px 0;
+}
+
+#pop-up-text span {
+	font-size: initial;
+	font-family: 'Lato', sans-serif;
+	font-style: italic;
+}
 
 
 /*_____RESPONSIVE_____*/
 
 @media (max-width: 768px) {
-    #mood-parent {
-        grid-template-columns: 1fr 1fr;
+    .mood-parent {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .mood-child {
-        justify-self: center;
-    }
+	    height: 100px;
+	    width: 100px;
+	}
+
+    .mood-child-selection {
+	    height: 50px;
+	    width: 50px;
+	    margin : 0 5px;
+	}
+
+    #pop-up-img {
+		height: 150px;
+		width: 150px;
+	}
+
+	#pop-up-text {
+		margin: 30px 0;
+		font-size: 2em;
+	}
 }
 
 
@@ -111,8 +148,11 @@ body {
         opacity: 1;
         transform: scale(1, 1);
     }
+    30% {
+        opacity: 0.75;
+    }
     to {
-        opacity: 0.5;
+        opacity: 1;
         transform: scale(1.25, 1.25);
     }
 }
