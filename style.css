@@ -47,14 +47,13 @@ body {
  /* Display de la barre de menu et de la fenêtre de présentation */
 
 .mood-parent-selection,
-#pop-up-child {
+#presentation-child {
     display: flex;
-    align-items: center;
 }
 
 .mood-parent,
 .mood-parent-selection,
-#pop-up-child {
+#presentation-child {
 	justify-content: center;
 }
 
@@ -64,6 +63,7 @@ body {
     height: 60px;
     width: 60px;
     padding: 5px 10px;
+    margin: 0;
 }
 
 .mood-child-selection:hover {
@@ -77,37 +77,47 @@ body {
     border-radius: 15px;
 }
 
-/* Style de la fenêtre pop-up */
+/* Style de la fenêtre de presentation */
 
-#pop-up-parent {
+#presentation-parent {
     visibility: hidden;
 }
 
-#pop-up-child {
-    text-align: left;
+.presentation-active {
+    visibility: visible !important;
 }
 
-#pop-up-img,
-#pop-up-text {
+#presentation-child {
+    text-align: left;
+    margin: 30px 0;
+}
+
+#presentation-img,
+#presentation-text {
     width: 50%;
 }
 
-#pop-up-img {
+#presentation-img {
     height: 250px;
     width: 250px;
 }
 
-#pop-up-text {
+#presentation-text {
     font-size: 2.25em;
-    margin: 30px;
+    margin: 15px 0 0 30px;
     text-align: left;
 }
 
-#pop-up-text p {
+#presentation-text p {
     font-size: initial;
     font-family: 'Lato', sans-serif;
     font-style: italic;
-    margin : 0;
+    margin: 0;
+    text-transform: capitalize;
+}
+
+#presentation-text p:first-of-type {
+    margin: 15px 0 3px 0;
 }
 
 /* Responsive */
@@ -125,18 +135,29 @@ body {
     .mood-child-selection {
         height: 50px;
         width: 50px;
-        margin: 0 5px;
     }
 
-    #pop-up-img {
+    #presentation-img {
         height: 150px;
         width: 150px;
     }
 
-    #pop-up-text {
-        margin: 30px 0;
+    #presentation-text {
         font-size: 2em;
     }
+}
+
+@media (max-width: 500px) {
+    .mood-parent-selection {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+		grid-gap: 0;
+    }
+
+    #presentation-child {
+    	flex-direction: column;
+		align-items: center;
+	}
 }
 
 /* Animations */

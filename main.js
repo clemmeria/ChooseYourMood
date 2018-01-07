@@ -5,10 +5,10 @@ var $fonts;
 var $selectFont;
 var $imgs;
 
-// Création des paragraphes qui vont recueillir les infos typographiques à insérer dans la pop-up
+// Création des paragraphes qui vont recueillir les infos typographiques à insérer dans la fenêtre
 var famille = document.createElement("p");
 var categorie = document.createElement("p");
-var infos = document.querySelector("#pop-up-text");
+var infos = document.querySelector("#presentation-text");
 
 function ajaxGet(url, callback) {
     var req = new XMLHttpRequest();
@@ -37,7 +37,6 @@ ajaxGet("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCq2Ygc98wsvGD
     for (let img of $imgs) {
         img.addEventListener("click", setSelected);
     }
-
 });
 
 function setSelected(e) {
@@ -49,12 +48,12 @@ function setSelected(e) {
     let $newImg = this;
     $newImg.classList.add("mood-child-selected");
 
-    //Apparition de la fenêtre pop-up contenant l'image du mood et le texte
-    var $popUpText = document.querySelector("#pop-up-child");
-    var $popUpImg = document.querySelector("#pop-up-img");
-    $popUpImg.alt = $newImg.alt;
-    $popUpImg.src = $newImg.src;
-    document.querySelector("#pop-up-parent").style.visibility = "visible";
+    //Apparition de la fenêtre de presentation contenant l'image du mood et le texte
+    var $presText = document.querySelector("#presentation-child");
+    var $presImg = document.querySelector("#presentation-img");
+    $presImg.alt = $newImg.alt;
+    $presImg.src = $newImg.src;
+    document.querySelector("#presentation-parent").classList.add("presentation-active");
 
     //Changement du menu de selection par modification de class
     for (let img of $imgs) {
@@ -90,7 +89,7 @@ function setSelected(e) {
 
     $selectFont = font;
     // Changement de la font
-    $popUpText.style.fontFamily = font;
+    $presText.style.fontFamily = font;
 
     // Appel de la fonction searchTypo 
     searchTypo();
@@ -113,8 +112,7 @@ function searchTypo() {
     famille.textContent = "Family : " + family;
     categorie.textContent = "Category : " + category;
 
-    // Ajout des informations en tant qu'enfant au paragraphe pop-up-text
+    // Ajout des informations en tant qu'enfant au paragraphe text
     infos.appendChild(famille);
     infos.appendChild(categorie);
-
 }
