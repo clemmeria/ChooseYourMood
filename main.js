@@ -1,6 +1,10 @@
 // Appel AJAX GET
 // Prend en paramètres l'URL cible et la fonction callback appelée en cas de succès
 
+// Variables globales
+var fonts;
+var selectFont;
+
 function ajaxGet(url, callback) {
     var req = new XMLHttpRequest();
     req.open("GET", url);
@@ -20,23 +24,17 @@ function ajaxGet(url, callback) {
 
 // Accès à l'API Google Fonts avec la clé d'accès AIzaSyCq2Ygc98wsvGDk4XY_ApI4CoXNPu__Q5Y
 ajaxGet("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCq2Ygc98wsvGDk4XY_ApI4CoXNPu__Q5Y", function (reponse) {
-
     var fonts = JSON.parse(reponse);
-
-    // Appel de la fonction setSelected
-    $imgs = document.querySelectorAll(".mood-child");
-    for (let img of $imgs) {
-        img.addEventListener("click", setSelected);
-        // var selectFont = img.addEventListener("click", setSelected);
-        // Ici il faudrait recuperer font qui est dans le return;
-        // Mais c'est une boucle donc ça renvoie les 6 fonts
-        // Donc je comprends rien
-    }
-
-    // Appel de la fonction searchTypo avec comme arguments event et fonts
-    searchTypo(selectFont,fonts);
-
 });
+
+// Appel des fonctions
+// setSelected
+var $imgs = document.querySelectorAll(".mood-child");
+for (let img of $imgs) {
+    img.addEventListener("click", setSelected);
+}
+// searchTypo
+searchTypo(selectFont,fonts);
 
 // Création des spans qui vont recueillir les infos typographiques à insérer dans la pop-up
 var famille = document.createElement("p");
@@ -89,22 +87,22 @@ function setSelected(e) {
         default:
             font = "Lato";
     }
-
+    
     // Changement de la font
     $popUpText.style.fontFamily = font;
+    
+    selectFont=font;
 
-     // return font; // je ne sais pas comment recuperer font
 }
 
-function searchTypo(fonts) {
-//function searchTypo(font,fonts) {
-
+function searchTypo(selectFont) {
+console.log(selectFont);
     // Recherche d'informations sur la font : famille et catégorie
     var items = fonts.items;
-    var family = font;
+    var family = selectFont;
     var variants = items.variants;
     for (var i = 0; i < items.length; i++) {
-        if (font == items[i].family) {
+        if (selectFont == items[i].family) {
             category = items[i].category;
         }
     }
