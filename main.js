@@ -6,7 +6,7 @@ var $fonts;
 var $selectFont;
 var $imgs;
 
-// Création des spans qui vont recueillir les infos typographiques à insérer dans la pop-up
+// Création des paragraphes qui vont recueillir les infos typographiques à insérer dans la pop-up
 var famille = document.createElement("p");
 var categorie = document.createElement("p");
 var infos = document.querySelector("#pop-up-text");
