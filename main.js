@@ -27,14 +27,14 @@ ajaxGet("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCq2Ygc98wsvGD
     $imgs = document.querySelectorAll(".mood-child");
     for (let img of $imgs) {
         img.addEventListener("click", setSelected);
-        // var objetEvent = img.addEventListener("click", setSelected);
+        // var selectFont = img.addEventListener("click", setSelected);
+        // Ici il faudrait recuperer font qui est dans le return;
+        // Mais c'est une boucle donc ça renvoie les 6 fonts
+        // Donc je comprends rien
     }
 
-    // Il faut réussir à envoyer l'objet event à la fonction searchTypo
-    // Cette objet est dans la fonction setSelected
-
     // Appel de la fonction searchTypo avec comme arguments event et fonts
-    //searchTypo(objetEvent,fonts);
+    searchTypo(selectFont,fonts);
 
 });
 
@@ -65,11 +65,6 @@ function setSelected(e) {
     var moodParent = document.querySelector(".mood-parent");
     moodParent.classList.add("mood-parent-selection");
 
-    // return (e);
-}
-
-function searchTypo(e, fonts) {
-
     // Recherche du mood selectionné et attribution de la font
     var font = "";
     switch (e.target.id) {
@@ -97,6 +92,12 @@ function searchTypo(e, fonts) {
 
     // Changement de la font
     $popUpText.style.fontFamily = font;
+
+     // return font; // je ne sais pas comment recuperer font
+}
+
+function searchTypo(fonts) {
+//function searchTypo(font,fonts) {
 
     // Recherche d'informations sur la font : famille et catégorie
     var items = fonts.items;
