@@ -105,7 +105,6 @@ body {
 #presentation-text {
     font-size: 2.25em;
     margin: 15px 0 0 30px;
-    text-align: left;
 }
 
 #presentation-text p {
@@ -157,6 +156,11 @@ body {
     #presentation-child {
     	flex-direction: column;
 		align-items: center;
+		text-align: center;
+	}
+
+	#presentation-text {
+    	margin: 0;
 	}
 }
 
