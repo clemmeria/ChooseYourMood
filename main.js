@@ -113,7 +113,7 @@ function searchTypo() {
     famille.textContent = "Family : " + family;
     categorie.textContent = "Category : " + category;
 
-    // Ajout des infos en tant qu'enfant au paragraphe pop-up-text
+    // Ajout des informations en tant qu'enfant au paragraphe pop-up-text
     infos.appendChild(famille);
     infos.appendChild(categorie);
 
