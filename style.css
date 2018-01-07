@@ -3,7 +3,7 @@ body {
     color: white;
 }
 
-/*_____TEXTES : titres_____*/
+/* Style des titres */
 
 #site-title,
 #site-subtitle {
@@ -24,13 +24,10 @@ body {
     margin: 0 0 25px 0;
 }
 
-
-
-/*_____ACCUEIL : fox-emoticons_____*/
+/*Style du menu d'accueil*/
 
 .mood-parent {
     display: grid;
-    justify-content: center;
     grid-template-columns: repeat(3, 1fr);
     margin: 0 30%;
     grid-gap: 20px;
@@ -47,46 +44,47 @@ body {
     animation-fill-mode: forwards;
 }
 
+ /* Display de la barre de menu et de la fenêtre de présentation */
 
-/* Style du fox selectionné */
-
-.selected {
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 20px;
-}
-
-/*_____MENU : fox-emoticons_____*/
-
-.mood-parent-selection {
+.mood-parent-selection,
+#pop-up-child {
     display: flex;
     align-items: center;
-    justify-content: center;
 }
+
+.mood-parent,
+.mood-parent-selection,
+#pop-up-child {
+	justify-content: center;
+}
+
+/*Style de la barre de menu*/
 
 .mood-child-selection {
     height: 60px;
     width: 60px;
-    margin: 0 10px;
+    padding: 5px 10px;
 }
 
 .mood-child-selection:hover {
-    animation: imgOpacity 500ms;
-    animation-fill-mode: forwards;
+    animation: shake 0.2s ease-in-out 0.1s infinite alternate;
 }
 
+/* Style du mood selectionné */
 
+.mood-child-selected {
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
+}
 
-/*_____POP-UP : display_____*/
+/* Style de la fenêtre pop-up */
 
 #pop-up-parent {
     visibility: hidden;
 }
 
 #pop-up-child {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    text-align: left;
 }
 
 #pop-up-img,
@@ -111,8 +109,7 @@ body {
     font-style: italic;
 }
 
-
-/*_____RESPONSIVE_____*/
+/* Responsive */
 
 @media (max-width: 768px) {
     .mood-parent {
@@ -141,9 +138,7 @@ body {
     }
 }
 
-
-
-/*_____ANIMATIONS_____*/
+/* Animations */
 
 @keyframes imgOpacity {
     from {
@@ -157,4 +152,14 @@ body {
         opacity: 1;
         transform: scale(1.25, 1.25);
     }
+}
+
+@keyframes shake {
+	from {
+		transform: rotate(10deg);
+	}
+	to {
+		transform-origin: center center;
+		transform: rotate(-10deg);
+	}
 }
