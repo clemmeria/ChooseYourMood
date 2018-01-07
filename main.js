@@ -27,7 +27,7 @@ ajaxGet("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCq2Ygc98wsvGD
     $imgs = document.querySelectorAll(".mood-child");
     for (let img of $imgs) {
         img.addEventListener("click", setSelected);
-        var objetEvent = img.addEventListener("click", setSelected);
+        // var objetEvent = img.addEventListener("click", setSelected);
     }
 
     // Il faut réussir à envoyer l'objet event à la fonction searchTypo
