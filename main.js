@@ -1,7 +1,6 @@
 // Appel AJAX GET
 // Prend en paramètres l'URL cible et la fonction callback appelée en cas de succès
 
-<<<<<<< HEAD
 var $fonts;
 var $selectFont;
 var $imgs;
@@ -10,11 +9,6 @@ var $imgs;
 var famille = document.createElement("p");
 var categorie = document.createElement("p");
 var infos = document.querySelector("#pop-up-text");
-=======
-// Variables globales
-var fonts;
-var selectFont;
->>>>>>> 212124cfb3481e5aeb1194d66ac9db1b05e1ac24
 
 function ajaxGet(url, callback) {
     var req = new XMLHttpRequest();
@@ -35,7 +29,6 @@ function ajaxGet(url, callback) {
 
 // Accès à l'API Google Fonts avec la clé d'accès AIzaSyCq2Ygc98wsvGDk4XY_ApI4CoXNPu__Q5Y
 ajaxGet("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCq2Ygc98wsvGDk4XY_ApI4CoXNPu__Q5Y", function (reponse) {
-<<<<<<< HEAD
 
     $fonts = JSON.parse(reponse);
 
@@ -47,24 +40,6 @@ ajaxGet("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCq2Ygc98wsvGD
 
 });
 
-=======
-    var fonts = JSON.parse(reponse);
-});
-
-// Appel des fonctions
-// setSelected
-var $imgs = document.querySelectorAll(".mood-child");
-for (let img of $imgs) {
-    img.addEventListener("click", setSelected);
-}
-// searchTypo
-searchTypo(selectFont,fonts);
-
-// Création des spans qui vont recueillir les infos typographiques à insérer dans la pop-up
-var famille = document.createElement("p");
-var categorie = document.createElement("p");
-
->>>>>>> 212124cfb3481e5aeb1194d66ac9db1b05e1ac24
 function setSelected(e) {
 
     let $oldImg = document.querySelector(".mood-child-selected");
@@ -112,18 +87,11 @@ function setSelected(e) {
         default:
             font = "Lato";
     }
-<<<<<<< HEAD
 
     $selectFont = font;
-=======
-    
->>>>>>> 212124cfb3481e5aeb1194d66ac9db1b05e1ac24
     // Changement de la font
     $popUpText.style.fontFamily = font;
-    
-    selectFont=font;
 
-<<<<<<< HEAD
     // Appel de la fonction searchTypo 
     searchTypo();
 }
@@ -134,25 +102,10 @@ function searchTypo() {
     var items = $fonts.items;
     var family = $selectFont;
     var category = "Non répertorié";
-=======
-}
-
-function searchTypo(selectFont) {
-console.log(selectFont);
-    // Recherche d'informations sur la font : famille et catégorie
-    var items = fonts.items;
-    var family = selectFont;
->>>>>>> 212124cfb3481e5aeb1194d66ac9db1b05e1ac24
     var variants = items.variants;
 
     for (var i = 0; i < items.length; i++) {
-<<<<<<< HEAD
         category = ($selectFont == items[i].family) ? items[i].category : category;
-=======
-        if (selectFont == items[i].family) {
-            category = items[i].category;
-        }
->>>>>>> 212124cfb3481e5aeb1194d66ac9db1b05e1ac24
     }
 
 
