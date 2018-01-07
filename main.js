@@ -1,4 +1,4 @@
-// Exécute un appel AJAX GET
+// APpel AJAX GET
 // Prend en paramètres l'URL cible et la fonction callback appelée en cas de succès
 
 function ajaxGet(url, callback) {
@@ -29,8 +29,8 @@ ajaxGet("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCq2Ygc98wsvGD
     }
 
     // Création des spans qui vont recueillir les infos typographiques à insérer dans la pop-up
-    var famille = document.createElement("span");
-    var categorie = document.createElement("span");
+    var famille = document.createElement("p");
+    var categorie = document.createElement("p");
 
     function setSelected(e) {
         let $oldImg = document.querySelector(".mood-child-selected");
@@ -93,15 +93,12 @@ ajaxGet("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCq2Ygc98wsvGD
         }
         
         // Modification du contenu pour ajouter les infos typographiques
-        famille.textContent = "Family : " + family + "   ||   ";
+        famille.textContent = "Family : " + family;
         categorie.textContent = "Category : " + category;
         var infos = document.querySelector("#pop-up-text");
         
         // Ajout des infos en tant qu'enfant au paragraphe pop-up-text
-        var $br = document.createElement("br");
         infos.appendChild(famille);
-        /*if(infos.childNodes.length == 3) // && infos.childNodes[3] == "<span>"
-        	infos.appendChild($br);*/
         infos.appendChild(categorie);
     }
 });
