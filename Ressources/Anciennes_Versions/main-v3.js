@@ -1,27 +1,16 @@
+var $imgs = document.querySelectorAll(".mood-child"); //l29
+var famille = document.createElement("p"); //l42
+var categorie = document.createElement("p"); //l43
+var fonts = "";
+
 // Appel AJAX GET
 // Prend en paramètres l'URL cible et la fonction callback appelée en cas de succès
-
-<<<<<<< HEAD
-var $fonts;
-var $selectFont;
-var $imgs;
-
-// Création des spans qui vont recueillir les infos typographiques à insérer dans la pop-up
-var famille = document.createElement("p");
-var categorie = document.createElement("p");
-var infos = document.querySelector("#pop-up-text");
-=======
-// Variables globales
-var fonts;
-var selectFont;
->>>>>>> 212124cfb3481e5aeb1194d66ac9db1b05e1ac24
-
 function ajaxGet(url, callback) {
     var req = new XMLHttpRequest();
     req.open("GET", url);
     req.addEventListener("load", function () {
         if (req.status >= 200 && req.status < 400) {
-            // Appelle la fonction callback en lui passant la réponse de la requête
+            // Appel de la fonction callback en lui passant la réponse de la requête
             callback(req.responseText);
         } else {
             console.error(req.status + " " + req.statusText + " " + url);
@@ -35,36 +24,24 @@ function ajaxGet(url, callback) {
 
 // Accès à l'API Google Fonts avec la clé d'accès AIzaSyCq2Ygc98wsvGDk4XY_ApI4CoXNPu__Q5Y
 ajaxGet("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCq2Ygc98wsvGDk4XY_ApI4CoXNPu__Q5Y", function (reponse) {
-<<<<<<< HEAD
 
-    $fonts = JSON.parse(reponse);
+    fonts = JSON.parse(reponse);
 
     // Appel de la fonction setSelected
-    $imgs = document.querySelectorAll(".mood-child");
     for (let img of $imgs) {
         img.addEventListener("click", setSelected);
+        // var objetEvent = img.addEventListener("click", setSelected);
     }
 
+    // Il faut réussir à envoyer l'objet event à la fonction searchTypo
+    // Cet objet est dans la fonction setSelected
+
+    // Appel de la fonction searchTypo avec comme arguments event et fonts
+    searchTypo(objetEvent,fonts);
+
 });
 
-=======
-    var fonts = JSON.parse(reponse);
-});
 
-// Appel des fonctions
-// setSelected
-var $imgs = document.querySelectorAll(".mood-child");
-for (let img of $imgs) {
-    img.addEventListener("click", setSelected);
-}
-// searchTypo
-searchTypo(selectFont,fonts);
-
-// Création des spans qui vont recueillir les infos typographiques à insérer dans la pop-up
-var famille = document.createElement("p");
-var categorie = document.createElement("p");
-
->>>>>>> 212124cfb3481e5aeb1194d66ac9db1b05e1ac24
 function setSelected(e) {
 
     let $oldImg = document.querySelector(".mood-child-selected");
@@ -73,6 +50,14 @@ function setSelected(e) {
 
     let $newImg = this;
     $newImg.classList.add("mood-child-selected");
+
+    //Appel de la fonction pour sortir de l'accueil et faire apparaître la fenêtre pop-up (qui n'en est pas vraiment une mais bon)
+    createPopUp($newImg);
+
+    // return (e);
+}
+
+function createPopUp($newImg) {
 
     //Apparition de la fenêtre pop-up contenant l'image du mood et le texte
     var $popUpText = document.querySelector("#pop-up-child");
@@ -87,6 +72,10 @@ function setSelected(e) {
     }
     var moodParent = document.querySelector(".mood-parent");
     moodParent.classList.add("mood-parent-selection");
+
+}
+
+function searchTypo(e, fonts) {
 
     // Recherche du mood selectionné et attribution de la font
     var font = "";
@@ -112,56 +101,28 @@ function setSelected(e) {
         default:
             font = "Lato";
     }
-<<<<<<< HEAD
 
-    $selectFont = font;
-=======
-    
->>>>>>> 212124cfb3481e5aeb1194d66ac9db1b05e1ac24
     // Changement de la font
     $popUpText.style.fontFamily = font;
-    
-    selectFont=font;
 
-<<<<<<< HEAD
-    // Appel de la fonction searchTypo 
-    searchTypo();
-}
-
-function searchTypo() {
-
-    // Recherche d'informations sur la font : famille et catégorie
-    var items = $fonts.items;
-    var family = $selectFont;
-    var category = "Non répertorié";
-=======
-}
-
-function searchTypo(selectFont) {
-console.log(selectFont);
     // Recherche d'informations sur la font : famille et catégorie
     var items = fonts.items;
-    var family = selectFont;
->>>>>>> 212124cfb3481e5aeb1194d66ac9db1b05e1ac24
+    var family = font;
     var variants = items.variants;
-
     for (var i = 0; i < items.length; i++) {
-<<<<<<< HEAD
-        category = ($selectFont == items[i].family) ? items[i].category : category;
-=======
-        if (selectFont == items[i].family) {
+        if (font == items[i].family) {
             category = items[i].category;
         }
->>>>>>> 212124cfb3481e5aeb1194d66ac9db1b05e1ac24
     }
-
 
     // Modification du contenu pour ajouter les infos typographiques
     famille.textContent = "Family : " + family;
     categorie.textContent = "Category : " + category;
+    var infos = document.querySelector("#pop-up-text");
 
-    // Ajout des informations en tant qu'enfant au paragraphe pop-up-text
+    // Ajout des infos en tant qu'enfant au paragraphe pop-up-text
     infos.appendChild(famille);
     infos.appendChild(categorie);
 
 }
+// Création des spans qui vont recueillir les infos typographiques à insérer dans la pop-up
